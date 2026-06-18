@@ -1,13 +1,89 @@
 import React, { useState } from 'react';
 import { useStore } from '../store/useStore';
-import { Search, Filter, AlignJustify, Kanban, CheckCircle2, Star, Sparkles, Clock } from 'lucide-react';
+import { Search, Filter, AlignJustify, Kanban, CheckCircle2, Star, Sparkles, Clock, Plus, X } from 'lucide-react';
 import { TaskDrawer } from './TaskDrawer';
 import { GlassCard } from '../ui/GlassCard';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const NewTaskModal = ({ isOpen, onClose, onSubmit }) => {
+  const [title, setTitle] = useState('');
+  const [priority, setPriority] = useState('medium');
+
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="w-full max-w-md bg-[#110D1A] border border-white/10 rounded-2xl shadow-2xl p-6"
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl font-[Instrument_Serif] text-white">Create New Task</h2>
+              <button onClick={onClose} className="text-white/50 hover:text-white transition-colors">
+                <X size={20} />
+              </button>
+            </div>
+            
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              if(title.trim()) {
+                onSubmit({ 
+                  title, 
+                  priority, 
+                  status: 'todo', 
+                  dueDate: new Date().toISOString().split('T')[0],
+                  hasAISuggestion: false,
+                  assigneeId: 'u1' // Defaulting to current user
+                });
+                setTitle('');
+                onClose();
+              }
+            }} className="space-y-4">
+              <div>
+                <label className="block text-xs font-[Manrope] text-white/50 uppercase tracking-wider mb-2">Task Title</label>
+                <input 
+                  autoFocus
+                  type="text" 
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="E.g., Deep Clean Suite 400" 
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white font-[Inter] text-sm focus:outline-none focus:border-[#7b39fc]/50 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-[Manrope] text-white/50 uppercase tracking-wider mb-2">Priority</label>
+                <select 
+                  value={priority}
+                  onChange={(e) => setPriority(e.target.value)}
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white font-[Inter] text-sm focus:outline-none focus:border-[#7b39fc]/50 transition-colors appearance-none"
+                >
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
+              <div className="pt-4 flex gap-3">
+                <button type="button" onClick={onClose} className="flex-1 px-4 py-3 rounded-xl border border-white/10 text-white font-[Cabin] text-sm font-bold hover:bg-white/5 transition-colors">Cancel</button>
+                <button type="submit" disabled={!title.trim()} className="flex-1 px-4 py-3 rounded-xl bg-[#7b39fc] text-white font-[Cabin] text-sm font-bold hover:bg-[#6a2ce3] transition-colors disabled:opacity-50">Create Task</button>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 export const MyTasks = () => {
-  const { tasks, users, completeTask } = useStore();
+  const { tasks, users, completeTask, addTask } = useStore();
   const [view, setView] = useState('list');
   const [selectedTaskId, setSelectedTaskId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleComplete = (e, id) => {
     e.stopPropagation();
@@ -25,7 +101,12 @@ export const MyTasks = () => {
   };
 
   return (
-    <div className="flex flex-col h-full font-sans">
+    <div className="flex flex-col h-full font-sans relative">
+      <NewTaskModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSubmit={(task) => addTask(task)} 
+      />
       
       {/* Top Filter Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 shrink-0">
@@ -48,6 +129,10 @@ export const MyTasks = () => {
               <Kanban size={16} />
             </button>
           </div>
+
+          <button onClick={() => setIsModalOpen(true)} className="bg-white text-black px-4 py-2.5 rounded-full flex items-center gap-2 text-sm font-[Cabin] font-bold shadow-lg hover:bg-gray-200 transition-colors uppercase tracking-wider ml-2">
+            <Plus size={16} /> New
+          </button>
         </div>
       </div>
 

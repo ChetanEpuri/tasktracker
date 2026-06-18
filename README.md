@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+<div align="center">
+  <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop" width="100%" height="300" style="object-fit: cover; border-radius: 12px; margin-bottom: 20px;" alt="AI Chip Background" />
+  
+  # ⚡ OLYMPUS AI
+  
+  **Deterministic Infrastructure & Task Tracking Engine**
+  
+  [![Deploy to GitHub Pages](https://github.com/ChetanEpuri/tasktracker/actions/workflows/deploy.yml/badge.svg)](https://github.com/ChetanEpuri/tasktracker/actions/workflows/deploy.yml)
+  [![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+  
+  [**View Live Demo**](https://chetanepuri.github.io/tasktracker/) • [**Report Bug**](#) • [**Request Feature**](#)
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🔮 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Olympus AI is a premium, high-performance task tracking interface built for those who demand **absolute control** and **zero latency**. Designed with a highly stylized, brutally aesthetic interface, it combines fluid animations with deterministically robust state management to orchestrate live operations at scale.
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Neural Routing & Predictive Load Balancing**: Fluid UI transitions powered by Framer Motion.
+- **Absolute State Sync**: Seamless drag-and-drop Kanban interface leveraging `@dnd-kit`.
+- **Zero Latency**: Instantaneous updates and local state persistence.
+- **Premium Aesthetics**: Dark mode default, interactive cursor tracking, and hardware-accelerated visual effects.
+- **Responsive Architecture**: Built with Tailwind CSS and React 19 for a flawless experience across all viewports.
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v18 or higher)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository
+   ```bash
+   git clone https://github.com/ChetanEpuri/tasktracker.git
+   cd tasktracker
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies
+   ```bash
+   npm install
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Start the deterministic engine (development server)
+   ```bash
+   npm run dev
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Technology Stack
+
+- **Core**: React 19, TypeScript, Vite
+- **Styling**: Tailwind CSS, PostCSS
+- **Animation**: Framer Motion, Lenis (Smooth Scrolling)
+- **Interaction**: dnd-kit (Drag and Drop), use-gesture
+- **Graphics**: Three.js, React Three Fiber, OGL
+
+## 🌐 Deployment
+
+This application is configured to automatically deploy to GitHub Pages via GitHub Actions whenever changes are pushed to the `main` branch.
+
+To trigger a manual deployment:
+1. Navigate to the **Actions** tab in your repository.
+2. Select the **Deploy static content to Pages** workflow.
+3. Click **Run workflow**.
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+<div align="center">
+  <p><i>"Stop managing your infrastructure blindly. Transition your operations to a deterministic architecture today."</i></p>
+</div>

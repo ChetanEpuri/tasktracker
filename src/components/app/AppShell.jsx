@@ -6,6 +6,11 @@ import { Dashboard } from '../../pages/Dashboard';
 import { MyTasks } from '../../pages/MyTasks';
 import { TaskDrawer } from '../../pages/TaskDrawer';
 import { AIAssistant } from '../../pages/AIAssistant';
+import { Projects } from '../../pages/Projects';
+import { Inbox } from '../../pages/Inbox';
+import { CalendarView } from '../../pages/CalendarView';
+import { Timeline } from '../../pages/Timeline';
+import { Agents } from '../../pages/Agents';
 import { CommandPalette } from './CommandPalette';
 
 export const AppShell = ({ onExit }) => {
@@ -25,12 +30,11 @@ export const AppShell = ({ onExit }) => {
             {activePage === 'dashboard' && <Dashboard />}
             {activePage === 'tasks' && <MyTasks />}
             {activePage === 'ai' && <AIAssistant />}
-            {activePage === 'projects' && (
-              <div className="p-12 flex flex-col items-center justify-center h-full text-center">
-                <h2 className="font-[Instrument_Serif] text-5xl text-white mb-4">Module Under Construction</h2>
-                <p className="text-[--text-muted] font-[Inter] max-w-md">The Property Upgrades and Projects module is currently being calibrated for the Datacore suite.</p>
-              </div>
-            )}
+            {activePage === 'projects' && <Projects />}
+            {activePage === 'inbox' && <Inbox />}
+            {activePage === 'calendar' && <CalendarView />}
+            {activePage === 'timeline' && <Timeline />}
+            {activePage === 'agents' && <Agents />}
           </div>
         </main>
       </div>

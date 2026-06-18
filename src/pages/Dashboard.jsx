@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/useStore';
-import { Doughnut } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Bot, Clock, AlertCircle, CalendarCheck, Wrench, Sparkles, Home } from 'lucide-react';
+import { Doughnut, Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Tooltip, Legend, Filler } from 'chart.js';
+import { Bot, Clock, AlertCircle, CalendarCheck, Wrench, Sparkles, Home, Activity } from 'lucide-react';
 import { GlassCard } from '../ui/GlassCard';
+import { motion } from 'framer-motion';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Tooltip, Legend, Filler);
 
 export const Dashboard = () => {
   const { tasks, projects, users } = useStore();
@@ -15,6 +16,33 @@ export const Dashboard = () => {
   const tasksDueToday = tasks.filter(t => t.status !== 'done' && t.dueDate === new Date().toISOString().split('T')[0]).slice(0, 3);
   const overdueTasks = tasks.filter(t => t.status !== 'done' && new Date(t.dueDate) < new Date());
   
+  const lineChartData = {
+    labels: ['1', '5', '10', '15', '20', '25', '30'],
+    datasets: [
+      {
+        label: 'Occupancy %',
+        data: [78, 80, 75, 85, 88, 85, 92],
+        borderColor: '#7b39fc',
+        backgroundColor: 'rgba(123, 57, 252, 0.1)',
+        borderWidth: 2,
+        tension: 0.4,
+        fill: true,
+        pointBackgroundColor: '#7b39fc',
+        pointBorderColor: '#fff',
+      }
+    ]
+  };
+
+  const lineChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false, color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+      y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' }, min: 50, max: 100 }
+    }
+  };
+
   return (
     <div className="flex flex-col gap-8 pb-12 font-sans">
       
@@ -72,7 +100,7 @@ export const Dashboard = () => {
 
         {/* Overdue */}
         <div className="col-span-12 md:col-span-4">
-          <GlassCard className="p-6 h-full flex flex-col justify-between">
+          <GlassCard className="p-6 h-full flex flex-col justify-between border-[--accent-red]/20">
             <div>
               <h3 className="font-[Manrope] font-semibold text-sm text-[--text-muted] uppercase tracking-wider mb-6 flex items-center gap-2">
                 <AlertCircle size={16} className="text-[--accent-red]" /> Pending Maintenance
@@ -91,44 +119,25 @@ export const Dashboard = () => {
       {/* Middle Row */}
       <div className="grid grid-cols-12 gap-6">
         
-        {/* AI Insights */}
-        <div className="col-span-12 md:col-span-8">
-          <GlassCard className="p-6 h-full">
-            <h3 className="font-[Manrope] font-semibold text-sm text-white uppercase tracking-wider mb-6 flex items-center gap-2">
-              <Sparkles size={16} className="text-[#7b39fc]" /> Datacore Intelligence Insights
+        {/* Trend Chart */}
+        <div className="col-span-12 lg:col-span-8 h-80">
+          <GlassCard className="p-6 h-full flex flex-col">
+            <h3 className="font-[Manrope] font-semibold text-sm text-[--text-muted] uppercase tracking-wider mb-6 flex items-center gap-2">
+              <Activity size={16} /> 30-Day Occupancy Trend
             </h3>
-            <div className="space-y-3">
-              <div className="bg-gradient-to-r from-[#2b2344]/50 to-transparent border border-[#7b39fc]/30 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between hover:border-[#7b39fc]/60 transition-colors gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-[#7b39fc] mt-2 shrink-0 shadow-[0_0_8px_#7b39fc]"></div>
-                  <div>
-                    <h4 className="font-[Manrope] font-semibold text-white mb-1">Batch Room Cleaning</h4>
-                    <span className="text-sm font-[Inter] text-[--text-muted]">3 housekeeping requests on Floor 4 can be batched for a 20% time saving.</span>
-                  </div>
-                </div>
-                <button className="bg-white text-black px-5 py-2.5 rounded-full text-xs font-[Cabin] font-bold hover:bg-gray-200 transition-colors shrink-0 shadow-lg shadow-white/10">Automate Schedule</button>
-              </div>
-              <div className="bg-white/5 border border-white/5 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between hover:bg-white/10 transition-colors gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-[--accent-amber] mt-2 shrink-0"></div>
-                  <div>
-                    <h4 className="font-[Manrope] font-semibold text-white mb-1">Staff Reallocation Recommended</h4>
-                    <span className="text-sm font-[Inter] text-[--text-muted]">Concierge Desk B has 40% higher workload than average today.</span>
-                  </div>
-                </div>
-                <button className="bg-white/10 border border-white/20 text-white px-5 py-2.5 rounded-full text-xs font-[Cabin] font-bold hover:bg-white/20 transition-colors shrink-0">Rebalance Staff</button>
-              </div>
+            <div className="flex-1 w-full relative">
+               <Line data={lineChartData} options={lineChartOptions} />
             </div>
           </GlassCard>
         </div>
 
         {/* Active Projects */}
-        <div className="col-span-12 md:col-span-4">
-          <GlassCard className="p-6 h-full">
+        <div className="col-span-12 lg:col-span-4 h-80">
+          <GlassCard className="p-6 h-full flex flex-col">
             <h3 className="font-[Manrope] font-semibold text-sm text-[--text-muted] uppercase tracking-wider mb-6 flex items-center gap-2">
               <Wrench size={16} /> Property Upgrades
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-6 flex-1 overflow-y-auto custom-scrollbar pr-2">
               {[
                 { id: 1, name: 'Lobby Renovation', progress: 85 },
                 { id: 2, name: 'Pool Deck Maintenance', progress: 40 },
@@ -151,6 +160,50 @@ export const Dashboard = () => {
           </GlassCard>
         </div>
 
+      </div>
+
+      {/* Bottom Row: AI Insights */}
+      <div className="grid grid-cols-12 gap-6">
+        <div className="col-span-12">
+          <GlassCard className="p-6">
+            <h3 className="font-[Manrope] font-semibold text-sm text-white uppercase tracking-wider mb-6 flex items-center gap-2">
+              <Sparkles size={16} className="text-[#7b39fc]" /> Datacore Intelligence Insights
+            </h3>
+            <div className="space-y-3">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-gradient-to-r from-[#2b2344]/50 to-transparent border border-[#7b39fc]/30 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between hover:border-[#7b39fc]/60 transition-colors gap-4"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 rounded-full bg-[#7b39fc] mt-2 shrink-0 shadow-[0_0_8px_#7b39fc] animate-pulse"></div>
+                  <div>
+                    <h4 className="font-[Manrope] font-semibold text-white mb-1">Batch Room Cleaning</h4>
+                    <span className="text-sm font-[Inter] text-[--text-muted]">3 housekeeping requests on Floor 4 can be batched for a 20% time saving.</span>
+                  </div>
+                </div>
+                <button className="bg-white text-black px-5 py-2.5 rounded-full text-xs font-[Cabin] font-bold hover:bg-gray-200 transition-colors shrink-0 shadow-lg shadow-white/10">Automate Schedule</button>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-white/5 border border-white/5 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between hover:bg-white/10 transition-colors gap-4"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 rounded-full bg-[--accent-amber] mt-2 shrink-0"></div>
+                  <div>
+                    <h4 className="font-[Manrope] font-semibold text-white mb-1">Staff Reallocation Recommended</h4>
+                    <span className="text-sm font-[Inter] text-[--text-muted]">Concierge Desk B has 40% higher workload than average today.</span>
+                  </div>
+                </div>
+                <button className="bg-white/10 border border-white/20 text-white px-5 py-2.5 rounded-full text-xs font-[Cabin] font-bold hover:bg-white/20 transition-colors shrink-0">Rebalance Staff</button>
+              </motion.div>
+            </div>
+          </GlassCard>
+        </div>
       </div>
 
     </div>

@@ -63,10 +63,11 @@ const PageTransitionLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 const AnimatedRoutes = () => {
+  const navigate = useNavigate();
   return (
     <PageTransitionLayout>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Landing onEnter={() => navigate('/app')} />} />
         
         {/* Main App Routes */}
         <Route path="/app" element={<MainLayout />}>
@@ -104,13 +105,9 @@ function App() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
+      smoothWheel: true,
+      wheelMultiplier: 1,
       touchMultiplier: 2,
-      infinite: false,
     });
 
     function raf(time: number) {

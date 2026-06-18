@@ -6,9 +6,10 @@ interface GlassCardProps {
   className?: string;
   onClick?: () => void;
   hoverIntensity?: number;
+  hoverEffect?: boolean;
 }
 
-export const GlassCard = ({ children, className = '', onClick, hoverIntensity = 1 }: GlassCardProps) => {
+export const GlassCard = React.memo(({ children, className = '', onClick, hoverIntensity = 1, hoverEffect = true }: GlassCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -83,4 +84,4 @@ export const GlassCard = ({ children, className = '', onClick, hoverIntensity = 
       </div>
     </motion.div>
   );
-};
+});

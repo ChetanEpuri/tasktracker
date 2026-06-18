@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { Navbar } from './components/landing/Navbar';
-import { Hero } from './components/landing/Hero';
-
+import Landing from './pages/Landing';
 import { AppShell } from './components/app/AppShell';
 import { initStore } from './store/useStore';
-
-const LandingPage = ({ onEnter }) => {
-  return (
-    <div className="relative text-[--text-main] bg-[--bg-core] min-h-screen font-sans">
-      <Navbar onEnter={onEnter} />
-      <Hero onEnter={onEnter} />
-    </div>
-  );
-};
 
 export default function App() {
   const [view, setView] = useState('landing');
@@ -48,7 +37,7 @@ export default function App() {
         )}
       </AnimatePresence>
       
-      {!transitioning && view === 'landing' && <LandingPage onEnter={() => navigateTo('app')} />}
+      {!transitioning && view === 'landing' && <Landing onEnter={() => navigateTo('app')} />}
       {!transitioning && view === 'app' && <AppShell onExit={() => navigateTo('landing')} />}
     </>
   );

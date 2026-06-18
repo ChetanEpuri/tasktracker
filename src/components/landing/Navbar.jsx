@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, ChevronDown, X } from 'lucide-react';
+import BorderGlow from '../ui/BorderGlow';
 
 export const Navbar = ({ onEnter }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,25 +21,32 @@ export const Navbar = ({ onEnter }) => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8 ml-8">
-            <a href="#" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity">Home</a>
-            <a href="#" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity flex items-center gap-1">
-              Services <ChevronDown size={14} />
+            <a href="#hero" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity">Command</a>
+            <a href="#features" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity flex items-center gap-1">
+              Engine <ChevronDown size={14} />
             </a>
-            <a href="#" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity">Reviews</a>
-            <a href="#" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity">Contact us</a>
+            <a href="#scale" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity">Scale</a>
+            <a href="#spline" className="font-[Manrope] font-medium text-[14px] text-white hover:opacity-80 transition-opacity">Telemetry</a>
           </div>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4 ml-auto">
-            <button className="bg-white border border-[#d4d4d4] rounded-[8px] text-[#171717] font-[Manrope] font-semibold text-[14px] px-4 py-2 hover:bg-gray-50 transition-colors">
-              Sign In
-            </button>
-            <button 
-              onClick={onEnter}
-              className="bg-[#7b39fc] rounded-[8px] text-[#fafafa] font-[Manrope] font-semibold text-[14px] px-4 py-2 shadow-sm hover:bg-[#6a2ce3] transition-colors"
-            >
-              Get Started
-            </button>
+            <BorderGlow borderRadius={8} glowRadius={15} glowIntensity={0.8}>
+              <button 
+                onClick={onEnter}
+                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-[8px] text-white font-[Manrope] font-bold text-[14px] px-6 py-2.5 hover:bg-white/20 transition-colors shadow-sm h-full"
+              >
+                Sign In
+              </button>
+            </BorderGlow>
+            <BorderGlow borderRadius={8} glowRadius={20} glowIntensity={1.2}>
+              <button 
+                onClick={onEnter}
+                className="bg-[#7b39fc] rounded-[8px] text-[#fafafa] font-[Manrope] font-bold text-[14px] px-6 py-2.5 shadow-[0_0_15px_rgba(123,57,252,0.5)] hover:bg-[#6a2ce3] hover:shadow-[0_0_25px_rgba(123,57,252,0.8)] transition-all hover:-translate-y-0.5 will-change-transform h-full"
+              >
+                Deploy Now
+              </button>
+            </BorderGlow>
           </div>
 
           {/* Mobile Menu Toggle */}
