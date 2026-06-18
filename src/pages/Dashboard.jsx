@@ -50,7 +50,7 @@ export const Dashboard = () => {
       <div className="flex justify-between items-end">
         <div>
           <h1 className="font-[Instrument_Serif] text-5xl text-white tracking-tight mb-2">Property Overview</h1>
-          <p className="text-[--text-muted] font-[Inter] text-sm">Real-time metrics for Datacore flagship property</p>
+          <p className="text-[--text-muted] font-[Inter] text-sm">Real-time metrics for Olympus AI flagship property</p>
         </div>
       </div>
 
@@ -167,7 +167,7 @@ export const Dashboard = () => {
         <div className="col-span-12">
           <GlassCard className="p-6">
             <h3 className="font-[Manrope] font-semibold text-sm text-white uppercase tracking-wider mb-6 flex items-center gap-2">
-              <Sparkles size={16} className="text-[#7b39fc]" /> Datacore Intelligence Insights
+              <Sparkles size={16} className="text-[#7b39fc]" /> Olympus AI Intelligence Insights
             </h3>
             <div className="space-y-3">
               <motion.div 

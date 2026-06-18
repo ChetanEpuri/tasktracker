@@ -51,7 +51,7 @@ export const Sidebar = () => {
               <path d="M1.04356 6.35771L13.6437 0.666504C14.0729 0.472596 14.5684 0.551608 14.919 0.869408L23.4981 8.64731C23.9576 9.06385 24.0863 9.72145 23.8188 10.2831L16.2917 26.0827C16.0354 26.6206 15.4285 26.8778 14.8617 26.6896L1.86016 22.3735C1.35338 22.2052 1.00282 21.7371 0.985955 21.2057L0.598583 9.00688C0.581561 8.47055 0.871092 7.97159 1.35032 7.70586L1.04356 6.35771Z" fill="white"/>
               <circle cx="12" cy="12" r="10" fill="white" />
             </svg>
-            {!sidebarCollapsed && <span className="font-[Manrope] font-bold tracking-wide text-white text-lg truncate">Datacore</span>}
+            {!sidebarCollapsed && <span className="font-[Manrope] font-bold tracking-wide text-white text-lg truncate">Olympus AI</span>}
           </div>
           {!sidebarCollapsed && (
             <button onClick={toggleSidebar} className="text-[--text-muted] hover:text-white p-1 rounded-lg hover:bg-white/5 transition-colors">

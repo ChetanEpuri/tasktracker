@@ -16,7 +16,7 @@ export const Footer = ({ onEnter }) => {
           <div className="lg:col-span-5 flex flex-col items-start">
             <h2 className="font-[Instrument_Serif] text-5xl md:text-6xl text-white tracking-tighter mb-6 flex items-center gap-2">
               <span className="w-8 h-8 rounded-full bg-[#7b39fc] flex items-center justify-center border border-white/20"></span>
-              DATACORE
+              Olympus AI
             </h2>
             <p className="text-[--text-muted] font-[Inter] text-sm leading-relaxed max-w-sm mb-8">
               The deterministic infrastructure engine for high-end property operations. Built for those who demand absolute control and zero latency.
@@ -69,7 +69,7 @@ export const Footer = ({ onEnter }) => {
         {/* Bottom Legal */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-[Inter] text-xs text-[--text-muted]">
-            © {new Date().getFullYear()} Datacore Technologies Inc. All rights reserved.
+            © {new Date().getFullYear()} Olympus AI Technologies Inc. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="font-[Inter] text-xs text-[--text-muted] hover:text-white transition-colors">Privacy Policy</a>

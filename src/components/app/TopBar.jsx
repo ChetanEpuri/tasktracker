@@ -6,7 +6,7 @@ export const TopBar = ({ onExit }) => {
   const { activePage, openCommandPalette } = useStore();
 
   const getPageTitle = () => {
-    const titles = { dashboard: 'Dashboard', tasks: 'My Tasks', ai: 'Datacore Intelligence' };
+    const titles = { dashboard: 'Dashboard', tasks: 'My Tasks', ai: 'Olympus AI Intelligence' };
     return titles[activePage] || activePage;
   };
 

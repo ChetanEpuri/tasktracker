@@ -95,7 +95,7 @@ export const TaskDrawer = ({ taskId, onClose }) => {
             <div className="bg-gradient-to-br from-[#2b2344]/80 to-[#1a1528] border border-[#7b39fc]/30 rounded-2xl p-6 mb-10 shadow-lg relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 bg-[#7b39fc] rounded-full blur-[60px] opacity-20 pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
               <div className="flex items-center gap-2 text-white font-[Manrope] font-bold text-sm mb-3 uppercase tracking-wider">
-                <Sparkles size={16} className="text-[#7b39fc]" /> Datacore Intelligence
+                <Sparkles size={16} className="text-[#7b39fc]" /> Olympus AI Intelligence
               </div>
               <p className="text-sm text-[--text-muted] leading-relaxed mb-6 relative z-10 font-[Inter]">
                 This task can be optimized by splitting it into 3 sub-tasks to improve tracking velocity across different staff members.

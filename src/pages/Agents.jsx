@@ -5,7 +5,7 @@ import { Cpu, Terminal, Zap, ShieldCheck, Activity, Play, Square, Settings2 } fr
 
 export const Agents = () => {
   const [logs, setLogs] = useState([
-    "> INITIALIZING DATACORE INTELLIGENCE MODULE...",
+    "> INITIALIZING Olympus AI INTELLIGENCE MODULE...",
     "> CONNECTING TO PROPERTY MANAGEMENT SYSTEMS...",
     "> CONNECTION SECURE. 0 LATENCY.",
   ]);
@@ -43,7 +43,7 @@ export const Agents = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 shrink-0">
         <div>
-          <h1 className="font-[Instrument_Serif] text-5xl text-white tracking-tight mb-2">Datacore Agents</h1>
+          <h1 className="font-[Instrument_Serif] text-5xl text-white tracking-tight mb-2">Olympus AI Agents</h1>
           <p className="text-[--text-muted] font-[Inter] text-sm flex items-center gap-2">
             <Cpu size={14} className="text-[#7b39fc]" /> Autonomous Property Intelligence
           </p>
@@ -108,7 +108,7 @@ export const Agents = () => {
           <div className="flex items-center justify-between p-4 border-b border-white/5 bg-[#110D1A]">
             <div className="flex items-center gap-3 text-[--text-muted]">
               <Terminal size={18} />
-              <span className="font-[Cabin] font-bold text-xs uppercase tracking-[0.2em]">Datacore Live Telemetry</span>
+              <span className="font-[Cabin] font-bold text-xs uppercase tracking-[0.2em]">Olympus AI Live Telemetry</span>
             </div>
             <div className="flex gap-2">
               <span className="w-3 h-3 rounded-full bg-white/10" />

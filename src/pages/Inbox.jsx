@@ -97,7 +97,7 @@ export const Inbox = () => {
                     <div>
                       <h2 className="text-3xl md:text-4xl font-[Instrument_Serif] text-white tracking-tight mb-2">{activeNotif.title}</h2>
                       <div className="flex items-center gap-3 text-[10px] font-[Manrope] text-[--text-muted] uppercase tracking-widest font-bold">
-                        <span>Datacore System</span>
+                        <span>Olympus AI System</span>
                         <span className="w-1 h-1 rounded-full bg-white/20" />
                         <span className="text-[#7b39fc]">{activeNotif.time}</span>
                       </div>

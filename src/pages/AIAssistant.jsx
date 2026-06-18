@@ -6,7 +6,7 @@ import { GlassCard } from '../ui/GlassCard';
 export const AIAssistant = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Datacore Intelligence online. I can help you analyze occupancy rates, optimize housekeeping routes, or draft property upgrade proposals. How can I assist today?' }
+    { role: 'assistant', content: 'Olympus AI Intelligence online. I can help you analyze occupancy rates, optimize housekeeping routes, or draft property upgrade proposals. How can I assist today?' }
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const endOfMessagesRef = useRef(null);
@@ -38,7 +38,7 @@ export const AIAssistant = () => {
         <div className="absolute top-0 right-0 w-32 h-32 bg-[#7b39fc] rounded-full blur-[60px] opacity-20 pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
         <h2 className="text-2xl font-[Instrument_Serif] text-white flex items-center gap-3 tracking-tight">
           <Sparkles size={24} className="text-[#7b39fc]" />
-          Datacore Intelligence
+          Olympus AI Intelligence
         </h2>
         <p className="text-sm font-[Inter] text-[--text-muted] mt-1">Advanced AI for Property Operations</p>
       </div>
@@ -86,7 +86,7 @@ export const AIAssistant = () => {
             type="text" 
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask Datacore Intelligence..." 
+            placeholder="Ask Olympus AI Intelligence..." 
             className="flex-1 bg-black/40 border border-white/10 rounded-full pl-6 pr-4 py-3 outline-none text-white text-sm font-[Inter] focus:border-[#7b39fc]/50 focus:bg-black/60 transition-all shadow-inner"
           />
           <button 

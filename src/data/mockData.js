@@ -46,5 +46,5 @@ export const initialNotifications = [
   { id: 'n5', type: 'system', text: 'Daily Occupancy Report is ready', time: '1d ago', read: true },
   { id: 'n6', type: 'mention', text: 'Hedy mentioned you in "Design New Uniforms"', time: '1d ago', read: true },
   { id: 'n7', type: 'complete', text: 'Alan completed "Kitchen Exhaust Cleaning"', time: '2d ago', read: true },
-  { id: 'n8', type: 'system', text: 'Welcome to Datacore! View the property map.', time: '1w ago', read: true },
+  { id: 'n8', type: 'system', text: 'Welcome to Olympus AI! View the property map.', time: '1w ago', read: true },
 ];
