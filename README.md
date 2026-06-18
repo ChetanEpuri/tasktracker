@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2565&auto=format&fit=crop" width="100%" height="300" style="object-fit: cover; border-radius: 12px; margin-bottom: 20px;" alt="AI Chip Background" />
   
   # ⚡ OLYMPUS AI
   
