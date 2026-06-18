@@ -123,7 +123,7 @@ function App() {
 
   return (
     <TaskProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/tasktracker">
         <AnimatedRoutes />
       </BrowserRouter>
     </TaskProvider>
